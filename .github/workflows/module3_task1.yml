@@ -1,0 +1,31 @@
+name: module3_task1
+on:
+  push:
+  schedule:
+    - cron: '0 0 * * *'
+jobs:
+  # single job
+  build:
+    runs-on: ubuntu-18.04
+    #seven steps representing the task
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install required tools
+        run: cd module3_task1 && sudo ./setup.sh
+
+      - name: Build app
+        run: cd module3_task1/ && make build
+
+      - name: test
+        run: sudo make unittest -C module3_task1
+
+      - name: help
+        run: sudo make help -C module3_task1
+
+      - name: clean
+        run: sudo make clean -C module3_task1
+
+      - name: lite
+        run: sudo make lite -C module3_task1
+
