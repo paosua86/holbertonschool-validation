@@ -1,6 +1,5 @@
 # Awesome Inc. website Docs
 
-
 ## Lifecycle:
 clean: Cleanup the content of the
 build: Generate the website from the markdown and configuration files in the directory dist/
@@ -17,6 +16,5 @@ validate:
     Go Hugo v0.80+
 
 ## Workflow:
-
     The workflow is executed into Ubuntu 18.04 environment
     Required tools are installed prior to any make target, by executing the script setup.sh
