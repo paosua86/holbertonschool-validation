@@ -28,4 +28,3 @@ jobs:
 
       - name: lite
         run: sudo make lite -C module3_task1
-
