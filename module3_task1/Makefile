@@ -7,3 +7,16 @@ post: ##Create a new blog post whose filename and title come from the environmen
 	@sed -i "s/title: .*/title: ${POST_TITLE}/" ./content/posts/${POST_NAME}.md
 help: ##shows commands usage information
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
+
+.SILENT:
+help: ## Displays helpful information for Makefile commands
+	cat Makefile | grep '##' | tr -d '##'
+
+lint: ## lint
+	shellcheck setup.sh
+
+unittest: ## testing
+	pwd
+
+integration-test: ## tests
+	ls
