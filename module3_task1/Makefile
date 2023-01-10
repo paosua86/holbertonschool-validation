@@ -1,10 +1,8 @@
-.PHONY: ## build clean post
-
 build: ## Build the website
 	hugo -d dist/
 
 clean: ## Clean the build directory
-	rm -r dist/*
+	rm -rf dist/*
 
 post: ## Create a new blog post
 	hugo new posts/$(POST_NAME).md
