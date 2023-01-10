@@ -1,22 +1,16 @@
-clean: ##Cleanup the content of the directory dist/
-	@rm -rf dist
-build: ##Generate the website from the markdown and configuration files in the directory dist/
-	@hugo
-post: ##Create a new blog post whose filename and title come from the environment variables POST_TITLE and POST_NAME.
-	@hugo new posts/${POST_NAME}.md
-	@sed -i "s/title: .*/title: ${POST_TITLE}/" ./content/posts/${POST_NAME}.md
-help: ##shows commands usage information
-	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
+.PHONY: ## build clean post
 
-.SILENT:
-help: ## Displays helpful information for Makefile commands
-	cat Makefile | grep '##' | tr -d '##'
+build: ## Build the website
+	hugo -d dist/
 
-lint: ## lint
-	shellcheck setup.sh
+clean: ## Clean the build directory
+	rm -r dist/*
 
-unittest: ## testing
-	pwd
+post: ## Create a new blog post
+	hugo new posts/$(POST_NAME).md
+## Update the title of the new post
+	sed -i "s/title: .*/title: $(POST_TITLE)/" ./content/posts/$(POST_NAME).md
 
-integration-test: ## tests
-	ls
+help: ## Show commands usage information
+	@echo "Available targets:"
+	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//' | awk '{ printf "  %-20s %s\n", $$1, $$2 }'
