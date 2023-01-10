@@ -13,7 +13,6 @@ post: ## Create a new blog post
 
 lint: ## updated to lint the files README.md and DEPLOY.md with markdownlint command line
 	@markdownlint README.md DEPLOY.md
-
 package: ##  creates a file named awesome-website.zip
 	zip awesome-website.zip dist/
 
