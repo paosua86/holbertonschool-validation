@@ -1,10 +1,10 @@
 .PHONY: ## build clean post
 
 build: ## Build the website
-	hugo -d dist/
+	hugo
 
 clean: ## Clean the build directory
-	rm -r dist/*
+	rm -rf dist/*
 
 post: ## Create a new blog post
 	hugo new posts/$(POST_NAME).md
@@ -20,3 +20,9 @@ lint: ## updated to lint the files README.md and DEPLOY.md with markdownlint com
 
 package: ##  creates a file named awesome-website.zip
 	zip awesome-website.zip dist/
+
+unit-tests: ## Run unit-tets of the project
+
+integration-tests: ## Run integration-tests of the project
+
+validate: ## Validate the project

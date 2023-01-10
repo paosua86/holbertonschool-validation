@@ -8,6 +8,9 @@ post: #reate a new blog post whose filename and title come from the environment 
 help: shows commands usage information
 lint: updated to lint the files README.md and DEPLOY.md with markdownlint command line
 package: creates a file named awesome-website.zip
+unit-tests:
+integration-tests:
+validate:
 
 ## Prerequisites:
     GNU Make in version 3.81+
