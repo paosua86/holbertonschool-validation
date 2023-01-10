@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: "0 0 * * *"
 jobs:
-  build:
+  module3_task1::
     runs-on: ubuntu-18.04
     steps:
       - name: Clone repository
