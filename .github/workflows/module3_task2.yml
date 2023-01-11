@@ -18,9 +18,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: install hugo
-        run:
-          cd module3_task3 && ./setup.sh
+      - run: sudo module3_task1/setup.sh
       - name: install markdown
         run: npm install -g markdownlint-cli
 
