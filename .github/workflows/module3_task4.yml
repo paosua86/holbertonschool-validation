@@ -49,5 +49,5 @@ jobs:
             ## How to customize where the application logs are written?
             ## How to “quickly” verify that the application is running?
             ## Create a release with the archive triggered by a tag
-      - run: gh release create v1.0.0 --title "v1.0.0" \
+      - run: gh release create v1.0.1 --title "v1.0.1" \
           --notes DEPLOY.md 2>/dev/null || echo "OK"
