@@ -11,9 +11,10 @@ post: ## Create a new blog post
 ## Update the title of the new post
 	sed -i "s/title: .*/title: $(POST_TITLE)/" ./content/posts/$(POST_NAME).md
 
-lint: ## updated to lint the files README.md and DEPLOY.md with markdownlint command line
-	@markdownlint README.md DEPLOY.md
-package: ##  creates a file named awesome-website.zip
+lint: ## lint
+	markdownlint README.md DEPLOY.md
+
+package: ## creating package
 	zip awesome-website.zip dist/
 
 unit-tests: ## Run unit-tets of the project

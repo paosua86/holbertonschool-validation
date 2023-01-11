@@ -15,6 +15,6 @@ jobs:
       - run: cd module3_task1 && make build
       - run: cd module3_task1 && make clean
       - run: cd module3_task1 && make build
-      - run: cd module3_task1 && make lint
+      - run: sudo make lint -C module3_task2
       - run: cd module3_task1 && make post POST_NAME="name" POST_TITLE="title"
       - run: cd module3_task1 && make package
