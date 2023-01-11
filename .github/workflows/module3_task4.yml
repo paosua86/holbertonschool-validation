@@ -4,7 +4,7 @@ on:
     branches:
       - main
     tags:
-      - "1.0.0"
+      - "1.0.1"
   schedule:
     - cron: '0 0 * * *'
 
