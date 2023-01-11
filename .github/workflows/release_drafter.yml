@@ -1,3 +1,6 @@
+env:
+  GH_TOKEN: ${{ github.token }}
+
 name: release_drafter
 
 on:
