@@ -13,6 +13,7 @@
 
 ## How to customize where the application logs are written?
 
+
 ## How to “quickly” verify that the application is running (healthcheck)?
 
 * To verify that the application is running correctly run the command: `hugo server`
