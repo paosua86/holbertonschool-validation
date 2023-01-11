@@ -20,10 +20,10 @@ lint: ## lint with markdown
 	markdownlint DEPLOY.md
 
 unit-tests: ## test file
-	@ls
+
 
 integration-tests: ## integrate file
-	@ls
+
 
 validate: ## valide file
-	@ls
+
