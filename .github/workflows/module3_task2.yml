@@ -18,16 +18,17 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: sudo module3_task1/setup.sh
+      - run: sudo module3_task2/setup.sh
       - name: install markdown
         run: npm install -g markdownlint-cli
 
-      - name: Validate Makefile help
-        run:
-          cd module3_task2
-          make lint
-          make build
-          make package
-          make unit-tests
-          make integration-tests
-          make validate
+      - run: cd module3_task2 && make help
+      - run: cd module3_task2 && make build
+      - run: cd module3_task2 && make clean
+      - run: cd module3_task2 && make build
+      - run: cd module3_task2 && make post POST_NAME="name" POST_TITLE="title"
+      - run: cd module3_task2 && make lint
+      - run: cd module3_task2 && make package
+      - run: cd module3_task2 && make unit-tests
+      - run: cd module3_task2 && make integration-tests
+      - run: cd module3_task2 && make validate
