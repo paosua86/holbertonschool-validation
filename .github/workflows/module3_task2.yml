@@ -1,20 +1,38 @@
 name: module3_task2
+
 on:
+  schedule:
+    - cron: "0 0 * * *"
   push:
     branches:
-      - main
-  schedule:
-    - cron: '0 3 * * *'
+      - "master"
 jobs:
-  module3_task2:
+  build:
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v3
-      - run: sudo module3_task1/setup.sh
-      - run: cd module3_task1 && make help
-      - run: cd module3_task1 && make build
-      - run: cd module3_task1 && make clean
-      - run: cd module3_task1 && make build
-      - run: sudo make lint -C module3_task2
-      - run: cd module3_task1 && make post POST_NAME="name" POST_TITLE="title"
-      - run: cd module3_task1 && make package
+      - name: Clone repository
+        uses: actions/checkout@v3
+
+      - name: lint
+        run: sudo make lint -C module3_task2
+
+      - name: Install required tools
+        run: cd module3_task2 && sudo ./setup.sh
+
+      - name: test
+        run: sudo make unittest -C module3_task2
+
+      - name: test2
+        run: sudo make integration-test -C module3_task2
+
+      - name: help
+        run: sudo make help -C module3_task2
+
+      - name: validate
+        run: sudo make validate -C module3_task2
+
+      - name: Build command
+        run: sudo make build -C module3_task2
+
+      - name: Package
+        run: sudo make package -C module3_task2
