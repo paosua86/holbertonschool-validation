@@ -1,38 +1,36 @@
+---
 name: module3_task2
-
-on:
-  schedule:
-    - cron: "0 0 * * *"
+"on":
   push:
     branches:
-      - "master"
+      - main
+  schedule:
+    - cron: '0 0 * * *'
+
+permissions: read-all
+
 jobs:
-  build:
+  builds:
+    name: job1
     runs-on: ubuntu-18.04
+
     steps:
-      - name: Clone repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: install hugo
+        run: |
+          cd module3_task3 && ./setup.sh
+      - name: install markdown
+        run: npm install -g markdownlint-cli
 
-      - name: lint
-        run: sudo make lint -C module3_task2
-
-      - name: Install required tools
-        run: cd module3_task2 && sudo ./setup.sh
-
-      - name: test
-        run: sudo make unittest -C module3_task2
-
-      - name: test2
-        run: sudo make integration-test -C module3_task2
-
-      - name: help
-        run: sudo make help -C module3_task2
-
-      - name: validate
-        run: sudo make validate -C module3_task2
-
-      - name: Build command
-        run: sudo make build -C module3_task2
-
-      - name: Package
-        run: sudo make package -C module3_task2
+      - name: Validate Makefile help
+        run: |
+          cd module3_task2
+          make lint
+          make build
+          make package
+          make unit-tests
+          make integration-tests
+          make validate

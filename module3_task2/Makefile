@@ -1,28 +1,29 @@
-build: ## Builds a website using hugo with current config in config.toml
-	hugo
+help: ## Show help command
+	@sed -ne '/@sed/!s/## //p' Makefile
 
-post: ## Creates a new post using env vars POST_TITLE and POST_NAME
-	hugo new posts/$(POST_NAME).md
-	sed -i 's/title: .*/title: "$(POST_TITLE)"/' content/posts/$(POST_NAME).md
+build:  ## Create Website
+	@hugo
 
-clean: ## Removes content from dist directory
-	rm -rf dist/*
+clean:  ## Delete content of dist folder
+	@rm -rf dist/*
 
-.SILENT:
-help: ## Displays helpful information for Makefile commands
-	cat Makefile | grep '##' | tr -d '##'
+post:  ## Create a post
+	@hugo new ./content/posts/$(POST_NAME).md
+	@sed -i '/title:*/c\title: "$(POST_TITLE)"' ./content/posts/$(POST_NAME).md
 
-lint: ## lint
-	markdownlint README.md DEPLOY.md
+package: ## zip website
+	@hugo
+	@zip awesome-website.zip ./dist
 
-unittest: ## testing
-	pwd
+lint: ## lint with markdown
+	@markdownlint README.md
+	@markdownlint DEPLOY.md
 
-integration-test: ## tests
-	ls
+unit-tests: ## test file
+	@ls
 
-validate: ## validaion
-	ls -l
+integration-tests: ## integrate file
+	@ls
 
-package: ## creating package
-	zip awesome-website.zip dist/
+validate: ## valide file
+	@ls
