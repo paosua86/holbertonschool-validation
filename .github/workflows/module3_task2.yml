@@ -6,20 +6,20 @@ on:
   schedule:
     - cron: '0 0 * * *'
 jobs:
-  builds:
-    name: job1
+  module3_task1:
     runs-on: ubuntu-18.04
-
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: install hugo
-        run: |
-          cd module3_task3 && ./setup.sh
       - name: install markdown
         run: npm install -g markdownlint-cli
+      - run: sudo module3_task1/setup.sh
+      - run: cd module3_task1 && make help
+      - run: cd module3_task1 && make clean
+      - run: cd module3_task1 && make build
+      - run: cd module3_task1 && make post POST_NAME="name" POST_TITLE="title"
 
       - name: Validate Makefile help
         run: |
