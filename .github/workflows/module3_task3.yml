@@ -1,0 +1,40 @@
+name: module3_task3
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "1.0.0"
+  schedule:
+    - cron: '0 0 * * *'
+
+permissions: read-all
+
+jobs:
+  builds:
+    name: jobs
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: sudo module3_task3/setup.sh
+      - name: install markdown
+        run: npm install -g markdownlint-cli
+
+      - run: cd module3_task3 && make help
+      - run: cd module3_task3 && make build
+      - run: cd module3_task3 && make clean
+      - run: cd module3_task3 && make build
+      - run: cd module3_task3 && make post POST_NAME="name" POST_TITLE="title"
+      - run: cd module3_task3 && make lint
+      - run: cd module3_task3 && make package
+      - run: cd module3_task3 && make unit-tests
+      - run: cd module3_task3 && make integration-tests
+      - run: cd module3_task3 && make validate
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Release
+        uses: softprops/action-gh-release@v1
