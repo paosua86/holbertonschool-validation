@@ -1,5 +1,5 @@
 name: release_drafter
-"on":
+on:
   push:
     tags: "1.0.1"
     branches:
