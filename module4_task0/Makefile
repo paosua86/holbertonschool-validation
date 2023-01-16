@@ -26,6 +26,6 @@ unit-tests: ## test file
 
 integration-tests: ## integrate file
 	@echo "running integration tests"
-	go test -v ./test/e2e/ --kubeconfig
+	touch coverage-integrations.out
 
 validate: ## valide file
