@@ -2,6 +2,7 @@ help: ## Show help command
 	@sed -ne '/@sed/!s/## //p' Makefile
 
 build:  ## Create Website
+	@sudo apt install ./hugo.deb
 	@hugo
 	touch awesome-api
 
