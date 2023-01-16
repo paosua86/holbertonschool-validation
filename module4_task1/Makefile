@@ -17,6 +17,10 @@ package: ## zip website
 	@zip awesome-website.zip ./dist
 
 lint: ## lint with markdown
+	@apt install curl -y
+	@curl --silent --location https://deb.nodesource.com/setup_16.x | bash -
+	@apt install nodejs -y
+	@npm install -g markdownlint-cli 1>&2
 	@markdownlint README.md
 	@markdownlint DEPLOY.md
 
@@ -33,3 +37,4 @@ validate: ## valide file
 .PHONY:
 build-docker: ## build-docker
 	@docker build -t "awesome:build" ./build
+
