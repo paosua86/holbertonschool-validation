@@ -32,4 +32,4 @@ validate: ## valide file
 
 .PHONY:
 build-docker: ## build-docker
-	@docker run -t "awesome:build" ./build
+	@docker build -t "awesome:build" ./build
