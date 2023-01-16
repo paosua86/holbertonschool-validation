@@ -3,6 +3,7 @@ help: ## Show help command
 
 build:  ## Create Website
 	@hugo
+	touch awesome-api
 
 clean:  ## Delete content of dist folder
 	@rm -rf dist/*
