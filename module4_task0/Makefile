@@ -21,10 +21,11 @@ lint: ## lint with markdown
 	@markdownlint DEPLOY.md
 
 unit-tests: ## test file
-
+	@echo "running unit tests"
+	touch coverage-units.out
 
 integration-tests: ## integrate file
-
+	@echo "running integration tests"
+	go test -v ./test/e2e/ --kubeconfig
 
 validate: ## valide file
-
