@@ -11,6 +11,7 @@
 *integration-tests:
 *validate:
 *build-docker: creates a dockerfile
+*docker-tests: test docker
 
 "## Prerequisites"
     GNU Make in version 3.81+
