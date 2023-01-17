@@ -2,7 +2,6 @@ help: ## Show help command
 	@sed -ne '/@sed/!s/## //p' Makefile
 
 build:  ## Create Website
-	@sudo apt install ./hugo.deb
 	@hugo
 	touch awesome-api
 
@@ -41,4 +40,7 @@ build-docker: ## build-docker
 
 .PHONY: build-dependencies
 build-dependencies: ## build dependencies for ubuntu
+	@apt-get update
+	@apt-get install curl git
+	@curl -L https://github.com/gohugoio/hugo/releases/download/v0.91.2/hugo_0.91.2_Linux-64bit.deb -o hugo.deb
 	@sudo apt install ./hugo.deb
