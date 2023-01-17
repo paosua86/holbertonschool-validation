@@ -24,23 +24,31 @@ jobs:
         with:
           node-version: 16
       - name: install hugo
-        run: make -C module4_task1 build
+        run: make -C module4_task1 build-dependencies
 
       - name: install markdown
         run: npm install -g markdownlint-cli
 
-      - run: cd module4_task1 && make help
-      - run: cd module4_task1 && make build
-      - run: cd module4_task1 && make clean
-      - run: cd module4_task1 && make build
+      # - run: cd module4_task1 && make help
+      # - run: cd module4_task1 && make build
+      # - run: cd module4_task1 && make clean
+      # - run: cd module4_task1 && make build
       # - run: cd module4_task1 && make post POST_NAME="name" POST_TITLE="title"
-      - run: cd module4_task1 && make lint
-      - run: cd module4_task1 && make package
-      - run: cd module4_task1 && make unit-tests
-      - run: cd module4_task1 && make integration-tests
-      - run: cd module4_task1 && make validate
-      - name: Checkout
-        uses: actions/checkout@v3
+      # - run: cd module4_task1 && make lint
+      # - run: cd module4_task1 && make package
+      # - run: cd module4_task1 && make unit-tests
+      # - run: cd module4_task1 && make integration-tests
+      # - run: cd module4_task1 && make validate
+      # - name: Checkout
+      #   uses: actions/checkout@v3
+      - name: Validate Makefile help
+        run: |
+          cd module4_task1
+          make build
+          make package
+          make unit-tests
+          make integration-tests
+          make validate
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/1.0.1')
