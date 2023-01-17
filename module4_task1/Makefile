@@ -3,6 +3,10 @@ help: ## Show help command
 
 build:  ## Create Website
 	@sudo apt install ./hugo.deb
+	@cd quickstart
+	@git init
+	@git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke
+	@echo 'theme = "ananke"' >> config.toml
 	@hugo
 	touch awesome-api
 
