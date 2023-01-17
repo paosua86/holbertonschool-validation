@@ -39,3 +39,6 @@ validate: ## valide file
 build-docker: ## build-docker
 	@docker build -t "awesome:build" ./build
 
+.PHONY: build-dependencies
+build-dependencies: ## build dependencies for ubuntu
+	@sudo apt install ./hugo.deb
