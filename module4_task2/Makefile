@@ -43,3 +43,6 @@ build-docker: ## build-docker
 .PHONY: build-dependencies
 build-dependencies: ## build dependencies
 	@sudo apt install ./hugo.deb
+
+docker-tests: ## test docker
+	@container-structure-test test --image awesome:build --config config.yaml
