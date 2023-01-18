@@ -1,22 +1,21 @@
 .SILENT:
-help: ## Must be implemented and print a list of all the goals with a sentence.
-	sed -n '2p;5p;9p;13p;16p;20p' Makefile | grep "##" | tr -d "##"
+help: ## implemente and print a list of all the goals
+	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
-build: ## Compiles the source code of the application to a binary named awesome-api.
-	go mod init github.com/paosua86/awesome-api
-	go build
+build: ## Compiles the source code
+	@go mod init github.com/paosua86/awesome-api
+	@go build
 
-run: ## Runs the application in background by executing the binary awesome-api, and write logs into a file named awesome.log.
-	chmod u+x awesome-api
-	./awesome-api >./awesome.log 2>&1 &
+run: ## Runs the application in background
+	@./awesome-api >./awesome.log 2>&1 &
 
-stop: ## Stops the application.
-	pgrep awesome-api | xargs kill
+stop: ## Stops the application
+	@kill $(shell pgrep awesome-api)
 
-clean: ## Delete the binary awesome-api and the log file awesome-api.log.
-	rm -r awesome-api
-	pgrep awesome-api | xargs kill
+clean: ## Delete
+	@rm -r awesome-api
+	@rm awesome-api awesome.log
 
-test: ## Tests application to ensure that it behaves as expected.
-	curl http://localhost:9999
-	curl http://localhost:9999/health
+test: ## Tests the application
+	@curl http://localhost:9999
+	@curl http://localhost:9999/health
