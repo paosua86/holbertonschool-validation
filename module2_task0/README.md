@@ -1,4 +1,4 @@
-# GoHugo introduction
+# Go introduction
 
 
 ## Lifecycle:
