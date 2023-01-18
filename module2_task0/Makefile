@@ -1,5 +1,6 @@
 clean: ##Cleanup the content of the directory dist/
 	@rm -rf awesome-api
+	@rm -rf awesome-api.log
 build: ##Generate the website from the markdown and configuration files in the directory dist/
 	@mkdir awesome-api
 	@cd awesome-api
@@ -12,4 +13,9 @@ help: ##shows commands usage information
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
 run: ##Run the application in background
+	@cd awesome-api
 	@./awesome-api >./awesome.log 2>&1 &.
+
+test:
+
+stop:
