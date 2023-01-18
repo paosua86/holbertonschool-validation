@@ -13,9 +13,11 @@ help: ##shows commands usage information
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
 run: ##Run the application in background
-	@cd awesome-api
 	@./awesome-api >./awesome.log 2>&1 &.
 
-test:
+test: ## test the application
+	@curl http://localhost:9999
+	@curl http://localhost:9999/health
 
-stop:
+stop: ##Stop the application
+	@kill "$(pgrep awesome-api)"
