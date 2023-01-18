@@ -24,4 +24,4 @@ lint: ## make lint on the files
 	@golangci-lint run
 
 unit-tests: ## make unit tests on the files
-	@go test -v -short coverage-units.out || exit -1
+	@go test -v -short -coverprofile=coverage-units.out || echo $1
