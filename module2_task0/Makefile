@@ -20,3 +20,6 @@ clean: ## Delete
 test: ## Tests the application
 	@curl http://localhost:9999
 	@curl http://localhost:9999/health
+
+lint: ## lint this code.
+	@golangci-lint run
