@@ -13,6 +13,7 @@ stop: ## Stops the application
 	@kill $(shell pgrep awesome-api)
 
 clean: ## Delete
+	@make stop
 	@rm -r awesome-api
 	@rm -r awesome.log
 
