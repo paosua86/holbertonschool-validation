@@ -14,7 +14,7 @@ stop: ## Stops the application
 
 clean: ## Delete
 	@rm -r awesome-api
-	@rm awesome-api awesome.log
+	@rm -r awesome.log
 
 test: ## Tests the application
 	@curl http://localhost:9999
