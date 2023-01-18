@@ -4,7 +4,7 @@ help: ## implemente and print a list of all the goals
 
 build: ## Compiles the source code
 	@go mod init github.com/paosua86/awesome-api
-	@make lint 2>&1 && go build
+	@make lint 2>&1 && go build || exit -1
 
 run: ## Runs the application in background
 	@./awesome-api >./awesome.log 2>&1 &
@@ -21,7 +21,7 @@ test: ## Tests the application
 	@curl http://localhost:9999
 	@curl http://localhost:9999/health
 
-lint: ## target is to make lint on the files
+lint: ## make lint on the files
 	@golangci-lint run
 
 
