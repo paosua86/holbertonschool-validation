@@ -4,7 +4,7 @@ help: ## implemente and print a list of all the goals
 
 build: ## Compiles the source code
 	@go mod init github.com/paosua86/awesome-api
-	@go build
+	@make lint 2>&1 && go build
 
 run: ## Runs the application in background
 	@./awesome-api >./awesome.log 2>&1 &
