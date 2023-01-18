@@ -15,3 +15,4 @@ test
 stop
 lint: make lint on the files
 unit-tests: make unit tests on the files
+integration-tests: make integration tests on the files
