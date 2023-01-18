@@ -1,6 +1,5 @@
 build: ##Generate the website from the markdown and configuration files in the directory dist/
 	@mod init github.com/paosua86/awesome-api
-	@go build
 
 help: ##shows commands usage information
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
