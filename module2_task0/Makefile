@@ -1,6 +1,3 @@
-target:
-	@./config.sh
-
 clean: ##Cleanup the content of the directory dist/
 	@rm -rf awesome-api
 	@rm -rf awesome-api.log
