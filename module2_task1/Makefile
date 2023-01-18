@@ -13,8 +13,8 @@ stop: ## Stops the application
 
 clean: ## Delete
 	@make stop
-	@rm -r awesome-api
-	@rm -r awesome.log
+	@rm -r awesome-api 2>&1 &
+	@rm -r awesome.log 2>&1 &
 
 test: ## Tests the application
 	@curl http://localhost:9999
