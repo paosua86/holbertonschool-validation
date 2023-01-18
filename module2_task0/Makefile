@@ -24,4 +24,4 @@ test: ## Tests the application
 lint: ## lint this code
 	@golangci-lint run
 
-target: ## target this code
+target lint: ## target this code
