@@ -13,5 +13,4 @@ run
 clean
 test
 stop
-lint: lint this code
-target-lint:
+lint: target is to make lint on the files

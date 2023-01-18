@@ -21,7 +21,7 @@ test: ## Tests the application
 	@curl http://localhost:9999
 	@curl http://localhost:9999/health
 
-lint: ## lint this code
+lint: ## target is to make lint on the files
 	@golangci-lint run
 
-target-lint: ## target this code
+
