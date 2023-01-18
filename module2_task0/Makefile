@@ -3,7 +3,7 @@ help: ## Must be implemented and print a list of all the goals with a sentence.
 	sed -n '2p;5p;9p;13p;16p;20p' Makefile | grep "##" | tr -d "##"
 
 build: ## Compiles the source code of the application to a binary named awesome-api.
-	go mod init github.com/cbmarie255/awesome-api
+	go mod init github.com/paosua86/awesome-api
 	go build
 
 run: ## Runs the application in background by executing the binary awesome-api, and write logs into a file named awesome.log.
