@@ -1,14 +1,17 @@
-clean: ##Cleanup the content of the directory dist/
-	@rm -rf awesome-api
-	@rm -rf awesome-api.log
 build: ##Generate the website from the markdown and configuration files in the directory dist/
+	@mod init github.com/paosua86/awesome-api
 	@go build
 
 help: ##shows commands usage information
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
 run: ##Run the application in background
+	@chmod u+x awesome-api
 	@./awesome-api >./awesome.log 2>&1 &
+
+clean: ##Cleanup the content of the directory dist/
+	@rm -rf awesome-api
+	@rm -rf awesome-api.log
 
 test: ## test the application
 	@curl http://localhost:9999
@@ -16,6 +19,3 @@ test: ## test the application
 
 stop: ##Stop the application
 	@kill "$(pgrep awesome-api)"
-
-init: ##Initialize the application
-	@go mod init github.com/paosua86/awesome-api
