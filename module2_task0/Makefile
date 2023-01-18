@@ -1,10 +1,11 @@
+target:
+	@./config.sh
+
 clean: ##Cleanup the content of the directory dist/
 	@rm -rf awesome-api
 	@rm -rf awesome-api.log
 build: ##Generate the website from the markdown and configuration files in the directory dist/
-	@mkdir awesome-api
-	@cd awesome-api
-	@go mod init github.com/paosua86/awesome-api
+	@go build
 
 help: ##shows commands usage information
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
@@ -18,3 +19,6 @@ test: ## test the application
 
 stop: ##Stop the application
 	@kill "$(pgrep awesome-api)"
+
+init: ##Initialize the application
+	@go mod init github.com/paosua86/awesome-api
