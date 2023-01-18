@@ -23,4 +23,5 @@ test: ## Tests the application
 lint: ## make lint on the files
 	@golangci-lint run
 
-
+unit-tests: ## Runs the unit test
+	@go test -v -short -coverprofile=coverage-units.out
