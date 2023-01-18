@@ -13,6 +13,6 @@ run
 clean
 test
 stop
-lint
+lint: lint this code
 
 
