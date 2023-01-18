@@ -13,5 +13,6 @@ run
 clean
 test
 stop
+lint
 
 
