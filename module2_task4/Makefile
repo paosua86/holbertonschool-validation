@@ -10,8 +10,8 @@ help: ##shows commands usage information
 lint: ## lint with markdown
 
 check: ## test the app
-	@markdownlint '**/*.md' --ignore node_modules 2>&1 || exit 1
-	@markdown-link-check ./*.md 2>&1 || exit 1
+	@markdownlint **/*.md
+	@markdown-link-check ./*.md
 validate: ## W3C validator
 	@make build
 	@./w3c_validator.py ./dist/index.html
