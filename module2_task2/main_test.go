@@ -49,7 +49,7 @@ func Test_HelloHandler(t *testing.T) {
 		},
 		{
 			name:         "Without any param",
-			queryString:  "name=test&name=hello",
+			queryString:  "name=test&name=lol",
 			responseCode: 200,
 			body:         "Hello lol!",
 		},
