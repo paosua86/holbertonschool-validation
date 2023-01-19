@@ -10,8 +10,8 @@ help: ##shows commands usage information
 lint: ## lint with markdown
 
 check: ## test the app
-	@markdownlint **/*.md
-	@markdown-link-check ./*.md
+	@markdownlint ./content/posts/*.md
+	@markdown-link-check ./content/posts/*.md
 validate: ## W3C validator
 	@make build
 	@./w3c_validator.py ./dist/index.html
