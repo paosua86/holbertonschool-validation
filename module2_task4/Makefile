@@ -7,6 +7,8 @@ post: ##Create a new blog post whose filename and title come from the environmen
 	@sed -i "s/title: .*/title: ${POST_TITLE}/" ./content/posts/${POST_NAME}.md
 help: ##shows commands usage information
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
+lint: ## lint with markdown
+	@markdownlint -f '**/*.md' --ignore node_modules
 check: ## test the app
-
+	@make lint 2>&1 &
 validate: ## valide file
