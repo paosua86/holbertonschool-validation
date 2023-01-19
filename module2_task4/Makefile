@@ -10,5 +10,7 @@ help: ##shows commands usage information
 lint: ## lint with markdown
 	@markdownlint -f '**/*.md' --ignore node_modules
 check: ## test the app
-	@make lint 2>&1 &
-validate: ## valide file
+	@make lint
+validate: ## W3C validator
+	@make build
+	@./W3C-Validator/w3c_validator.py ./dist/index.html
