@@ -14,3 +14,4 @@ check: ## test the app
 validate: ## W3C validator
 	@make build
 	@./W3C-Validator/w3c_validator.py ./dist/index.html
+
