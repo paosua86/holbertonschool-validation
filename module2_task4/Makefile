@@ -8,10 +8,10 @@ post: ##Create a new blog post whose filename and title come from the environmen
 help: ##shows commands usage information
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 lint: ## lint with markdown
-	@markdownlint -f '**/*.md' --ignore node_modules 2>&1
+
 check: ## test the app
-	@make lint
-	@markdown-link-check ./*.md 2>&1
+	@markdownlint '**/*.md' --ignore node_modules 2>&1 || exit 1
+	@markdown-link-check ./*.md 2>&1 || exit 1
 validate: ## W3C validator
 	@make build
 	@./w3c_validator.py ./dist/index.html
