@@ -30,6 +30,36 @@ func Test_server(t *testing.T) {
 			responseCode: 200,
 			body:         "Hello Holberton!",
 		},
+		// new
+		{
+			name:         "Health page",
+			URI:          "/health",
+			responseCode: 200,
+			body:         "ALIVE",
+		},
+		{
+			name:         "Undefined page",
+			URI:          "/test",
+			responseCode: 404,
+			body:         "404 page not found\n",
+		},
+		{
+			name:         "Undefined name",
+			URI:          "/hello?name",
+			responseCode: 400,
+		},
+		{
+			name:         "Another queryString halo",
+			URI:          "/hello?halo=Haloooo!",
+			responseCode: 200,
+			body:         "Hello !",
+		},
+		{
+			name:         "Without any param",
+			URI:          "/hello?name=test&name=lol",
+			responseCode: 200,
+			body:         "Hello lol!",
+		},
 	}
 
 	for _, tt := range tests {
