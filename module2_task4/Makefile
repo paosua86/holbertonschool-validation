@@ -16,5 +16,3 @@ check: ## test the app
 validate: ## W3C validator
 	@make build
 	@./w3c_validator.py ./dist/index.html || true
-# Set default target
-.PHONY: build clean post help check validate
