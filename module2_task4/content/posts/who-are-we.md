@@ -12,5 +12,4 @@ Don't hesitate to check [Holberton School](https://www.holbertonschool.com/)
 
 Section 1?
 
-
 Hello
