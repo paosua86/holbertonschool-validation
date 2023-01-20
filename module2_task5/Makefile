@@ -32,6 +32,7 @@ validate: ## W3C validator
 	@./w3c_validator.py ./dist/index.html || true
 
 test: ## Tests the application
+	@make build
 	@make unit-tests &
 	@make integration-tests
 
