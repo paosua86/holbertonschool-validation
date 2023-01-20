@@ -8,7 +8,6 @@ post: ##Create a new blog post whose filename and title come from the environmen
 	@sed -i "s/title: .*/title: ${POST_TITLE}/" ./content/posts/${POST_NAME}.md
 help: ##shows commands usage information
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
-lint: ## lint with markdown
 
 check: ## test the app
 	@markdownlint ./content/posts/*.md
@@ -16,5 +15,20 @@ check: ## test the app
 validate: ## W3C validator
 	@make build
 	@./w3c_validator.py ./dist/index.html || true
+
+test: ## Tests the application
+	@make unit-tests &
+	@make integration-tests
+
+lint: ## make lint on the files
+	@golangci-lint run
+
+unit-tests: ## make unit tests on the files
+	@go test -v -short -coverprofile=coverage-units.out || echo $1
+
+integration-tests: ## make unit tests on the files
+	@go test -v -coverprofile=coverage-integrations.out || echo $1
+
 # Set default target
 .PHONY: build clean post help check validate
+

@@ -2,14 +2,16 @@
 
 ## Lifecycle
 
-* clean: Cleanup the content of the
-* build: Generate the website from the markdown
-    and configuration files in the directory dist/
-* post: #reate a new blog post whose filename
-    and title come from the environment variables POST_TITLE and POST_NAME.
+* clean: Cleanup the content of the directory dist/
+* build: check The target build
+* post: Create a new blog post
 * help: shows commands usage information
-* check: test the app
-* validate: valide file
+* check:  test the app
+* validate:  W3C validator
+* test:  Tests the application
+* lint:  make lint on the files
+* unit-tests:  make unit tests on the files
+* integration-tests:  make unit tests on the files
 
 ## Prerequisites
 
