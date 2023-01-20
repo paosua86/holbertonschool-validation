@@ -4,16 +4,16 @@ clean: ##Cleanup the content of the directory dist/
 	@-rm -rf awesome.log
 	@-rm -rf go.mod
 	@-rm -rf go.sum
-build: ##The target build should fail if the check fails, and should not generate a website
+build: ## build everything
 	@make go-build
 	@make hugo-build
 
-go-build: ##The target build should fail if the check fails, and should not generate a website
+go-build: ## build go
 	@go mod init github.com/paosua86/awesome-api
 	@go get github.com/gorilla/mux
 	@go build
 
-hugo-build: ##The target build should fail if the check fails, and should not generate a website
+hugo-build: ##build hugo
 	@hugo
 
 post: ##Create a new blog post whose filename and title come from the environment variables POST_TITLE and POST_NAME.
