@@ -1,5 +1,9 @@
 clean: ##Cleanup the content of the directory dist/
-	@rm -rf dist
+	@-rm -rf dist
+	@-rm -rf awesome-api
+	@-rm -rf awesome.log
+	@-rm -rf go.mod
+	@-rm -rf go.sum
 build: ##The target build should fail if the check fails, and should not generate a website
 	@go mod init github.com/paosua86/awesome-api
 	@go get github.com/gorilla/mux
@@ -37,6 +41,7 @@ integration-tests: ## make unit tests on the files
 
 run: ## Runs the application in background
 	@./awesome-api >./awesome.log 2>&1 &
+	@hugo server
 
 stop: ## Stops the application
 	@kill $(shell pgrep awesome-api) 2>&1 &
