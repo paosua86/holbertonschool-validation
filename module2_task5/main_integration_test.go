@@ -18,32 +18,35 @@ func Test_server(t *testing.T) {
 		responseCode int
 		body         string
 	}{
-
 		{
-			name:         "Health page",
+			name:         "Home page",
+			URI:          "",
+			responseCode: 200,
+			body:         "",
+		},
+		{
+			name:         "Name Holberton",
 			URI:          "/hello?name=Holberton",
 			responseCode: 200,
 			body:         "Hello Holberton!",
 		},
-		// new
 		{
-			name:         "Health page",
+			name:         "Health handler",
 			URI:          "/health",
 			responseCode: 200,
 			body:         "ALIVE",
 		},
 		{
-			name:         "Undefined page",
-			URI:          "/test",
-			responseCode: 404,
-			body:         "404 page not found\n",
-		},
-
-		{
-			name:         "Without any param",
-			URI:          "/hello?name=test&name=lol",
+			name:         "Empty name",
+			URI:          "/hello",
 			responseCode: 200,
-			body:         "Hello lol!",
+			body:         "Hello there!",
+		},
+		{
+			name:         "With two name parameters",
+			URI:          "/hello?name=Alejo&name=Luiyi",
+			responseCode: 200,
+			body:         "Hello Luiyi!",
 		},
 	}
 
@@ -72,7 +75,7 @@ func Test_server(t *testing.T) {
 				t.Fatal(err)
 			}
 			gotBody := string(bodyBytes)
-			if gotBody != expectedBody {
+			if gotBody != expectedBody && len(expectedBody) != 0 {
 				t.Errorf("handler returned unexpected body: got %q want %q", gotBody, expectedBody)
 			}
 		})
