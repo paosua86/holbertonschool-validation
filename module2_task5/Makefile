@@ -39,10 +39,10 @@ lint: ## make lint on the files
 	@golangci-lint run
 
 unit-tests: ## make unit tests on the files
-	@go test -v -short -coverprofile=coverage-units.out || echo $1
+	@go test -v -short -coverprofile=coverage-units.out
 
 integration-tests: ## make unit tests on the files
-	@go test -v -coverprofile=coverage-integrations.out || echo $1
+	@go test -v -coverprofile=coverage-integrations.out
 
 run: ## Runs the application in background
 	@./awesome-api >./awesome.log 2>&1 &
