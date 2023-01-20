@@ -44,7 +44,6 @@ integration-tests: ## make unit tests on the files
 
 run: ## Runs the application in background
 	@./awesome-api >./awesome.log 2>&1 &
-	@hugo server
 
 stop: ## Stops the application
 	@kill $(shell pgrep awesome-api) 2>&1 &
