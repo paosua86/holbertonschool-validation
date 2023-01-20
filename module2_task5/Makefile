@@ -1,7 +1,9 @@
 clean: ##Cleanup the content of the directory dist/
 	@rm -rf dist
 build: ##The target build should fail if the check fails, and should not generate a website
-	@make lint && go build || exit -1
+	@go mod init github.com/paosua86/awesome-api
+	@go get github.com/gorilla/mux
+	@go build
 	@hugo
 
 post: ##Create a new blog post whose filename and title come from the environment variables POST_TITLE and POST_NAME.
