@@ -1,7 +1,7 @@
 clean: ##Cleanup the content of the directory dist/
 	@rm -rf dist
-build: ##The target build should fail if the check fails, and should not generate a website
-	@make check >/dev/null 2>&1 && hugo || exit -1
+build: check ##The target build should fail if the check fails, and should not generate a website
+	@hugo
 
 post: ##Create a new blog post whose filename and title come from the environment variables POST_TITLE and POST_NAME.
 	@hugo new posts/${POST_NAME}.md
