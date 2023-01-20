@@ -1,9 +1,6 @@
 clean: ##Cleanup the content of the directory dist/
-	@-rm -rf dist
-	@-rm -rf awesome-api
-	@-rm -rf awesome.log
-	@-rm -rf go.mod
-	@-rm -rf go.sum
+	@-make stop
+	@-rm -rf awesome-api awesome.log coverage* go* ./dist
 
 build: ## build everything
 	@make go-build
@@ -14,7 +11,7 @@ go-build: ## build go
 	@go get github.com/gorilla/mux
 	@go build
 
-hugo-build: ##build hugo
+hugo-build: check ##build hugo
 	@hugo
 
 post: ##Create a new blog post whose filename and title come from the environment variables POST_TITLE and POST_NAME.
@@ -32,7 +29,7 @@ validate: ## W3C validator
 
 test: ## Tests the application
 	@-make build
-	@make unit-tests &
+	@make unit-tests
 	@make integration-tests
 
 lint: ## make lint on the files
