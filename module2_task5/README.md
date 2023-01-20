@@ -12,6 +12,8 @@
 * lint:  make lint on the files
 * unit-tests:  make unit tests on the files
 * integration-tests:  make unit tests on the files
+* run: Runs the application in background
+* stop: Stops the application
 
 ## Prerequisites
 
