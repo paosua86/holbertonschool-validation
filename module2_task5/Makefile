@@ -4,8 +4,7 @@ clean: ##Cleanup the content of the directory dist/
 	@-rm -rf awesome.log
 	@-rm -rf go.mod
 	@-rm -rf go.sum
-	@-rm -rf coverage-integrations.out
-	@-rm -rf coverage-units.out
+
 build: ## build everything
 	@make go-build
 	@make hugo-build
@@ -32,7 +31,6 @@ validate: ## W3C validator
 	@./w3c_validator.py ./dist/index.html || true
 
 test: ## Tests the application
-	@make build
 	@make unit-tests &
 	@make integration-tests
 
