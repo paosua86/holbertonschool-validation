@@ -1,7 +1,6 @@
 clean: ##Cleanup the content of the directory dist/
 	@rm -rf dist
 build: ##The target build should fail if the check fails, and should not generate a website
-	make check
 	hugo
 
 post: ##Create a new blog post whose filename and title come from the environment variables POST_TITLE and POST_NAME.
@@ -12,8 +11,9 @@ help: ##shows commands usage information
 lint: ## lint with markdown
 
 check: ## test the app
-	@markdownlint ./content/posts/*.md
-	@markdown-link-check ./content/posts/*.md
+	markdownlint ./content/posts/* && markdown-link-check ./content/posts/* && make build
 validate: ## W3C validator
 	@make build
 	@./w3c_validator.py ./dist/index.html || true
+# Set default target
+.PHONY: build clean post help check validate
