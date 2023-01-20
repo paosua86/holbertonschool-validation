@@ -32,3 +32,8 @@ integration-tests: ## make unit tests on the files
 # Set default target
 .PHONY: build clean post help check validate
 
+run: ## Runs the application in background
+	@./awesome-api >./awesome.log 2>&1 &
+
+stop: ## Stops the application
+	@kill $(shell pgrep awesome-api) 2>&1 &
