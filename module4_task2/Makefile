@@ -2,10 +2,9 @@ help: ## Show help command
 	@sed -ne '/@sed/!s/## //p' Makefile
 
 .PHONY: build
-build:  ## Create Website
-	@sudo apt install ./hugo.deb
-	@hugo
-	@touch awesome-api
+build: build-docker ## Create Website
+	@docker run --rm -v $(PWD):/app -w /app awesome:build make build-website
+	@docker run --rm -v $(PWD):/app -w /app awesome:build go build -o awesome-api
 
 clean:  ## Delete content of dist folder
 	@rm -rf dist/*
@@ -15,8 +14,9 @@ post:  ## Create a post
 	@sed -i '/title:*/c\title: "$(POST_TITLE)"' ./content/posts/$(POST_NAME).md
 
 package: ## zip website
-	@hugo
-	@zip awesome-website.zip ./dist
+	@make build
+	@zip awesome-website.zip dist/index.html
+	@zip awesome-api.zip awesome-api
 
 lint: ## lint with markdown
 	@apt install curl -y
@@ -38,11 +38,14 @@ validate: ## valide file
 
 .PHONY:
 build-docker: ## build-docker
-	@docker build -t "awesome:build" ./build
+	@docker build -t "awesome:build" build/Dockerfile .
 
 .PHONY: build-dependencies
 build-dependencies: ## build dependencies
 	@sudo apt install ./hugo.deb
 
 docker-tests: ## test docker
-	@container-structure-test test --image awesome:build --config config.yaml
+	@docker build -t awesome:build -f build/Dockerfile
+
+build-website:## Build the Docker image
+	hugo --source . --destination dist
