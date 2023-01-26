@@ -1,0 +1,24 @@
+---
+schemaVersion: 2.0.0
+
+commandTests:
+
+        - name: "Java is installed"
+          command: "which"
+          args: ["java"]
+          expectedOutput: ['/usr/bin/java']
+
+        - name: "Java version is correct"
+          command: "java"
+          args: ["--version"]
+          expectedOutput: ["openjdk 11.*"]
+
+fileExistenceTests:
+        - name: 'plugins.txt'
+          path: './jenkins/'
+          shouldExist: true
+
+fileContestTests:
+        - name: 'Plug in tests'
+          path: 'jenkins/plugins.txt'
+          expectedContents: ['*github:*']
