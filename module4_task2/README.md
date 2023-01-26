@@ -1,4 +1,4 @@
-## My Awesome API
+# My Awesome API
 
 ## Prerequisites
 
